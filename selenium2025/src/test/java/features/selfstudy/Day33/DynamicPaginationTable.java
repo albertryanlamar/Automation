@@ -41,6 +41,7 @@ public class DynamicPaginationTable {
 	        System.out.println("Clicked page: " + pageText);
 	        
 	        //get all the value in the table per page
+	        
             List<WebElement> tr = driver.findElements(By.xpath("//table[@id='example']//tr"));
             //List<WebElement> col = driver.findElements(By.xpath("//table[@id='example']//th"));
             
