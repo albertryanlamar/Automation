@@ -27,9 +27,7 @@ public class exerciseDatePicker {
                 .executeScript("return document.readyState").equals("complete")
         );
         
-        
         // Now interact with the departure date input
-    
         driver.findElement(By.xpath("//a[normalize-space()='Flight']"));
         driver.findElement(By.xpath("//input[@value='onewaymain']"));
         WebElement element = driver.findElement(By.xpath("//form[@id='flight_oneway']//input[contains(@placeholder,'Departure Date')]"));
