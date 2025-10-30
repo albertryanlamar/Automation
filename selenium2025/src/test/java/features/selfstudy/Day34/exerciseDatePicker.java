@@ -5,7 +5,9 @@ import java.time.Year;
 import java.util.List;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.*;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class exerciseDatePicker {
@@ -24,15 +26,15 @@ public class exerciseDatePicker {
         // open the datepicker
         driver.findElement(By.xpath("//a[normalize-space()='Flight']")).click();
         driver.findElement(By.xpath("//input[@value='onewaymain']")).click();
-        WebElement element = driver.findElement(
-                By.xpath("//form[@id='flight_oneway']//input[contains(@placeholder,'Departure Date')]"));
+        WebElement element = driver.findElement(By.xpath("//form[@id='flight_oneway']//input[contains(@placeholder,'Departure Date')]"));
         element.click();
 
-        String targetYearText = "2022";
+        String targetYearText = "2027";
+        String targetMonth = "Dec";
         Year targetYear = Year.of(Integer.parseInt(targetYearText));
         boolean found = false;
 
-        while (!found) { // max 20 loops to avoid infinite
+        while (!found) {
             List<WebElement> yearDropdown = driver.findElements(By.xpath("//select[@class='ui-datepicker-year']//option"));
             
          // Step 1: check if target year is in options
@@ -51,12 +53,31 @@ public class exerciseDatePicker {
                 Year currentYear = Year.of(Integer.parseInt(currentYearText));
                 if (targetYear.isBefore(currentYear)) {
                     driver.findElement(By.xpath("//a[@title='Prev']")).click();
-                } //else {
-                   // driver.findElement(By.xpath("//a[@title='Next']")).click();
-                //}
+                } 
+                if(targetYear.isAfter(currentYear)) {
+                	driver.findElement(By.xpath("//a[@title='Next']")).click();
+                }
                 Thread.sleep(500); // wait for dropdown to refresh
             }
             
+        }
+        
+        //select the date 
+        boolean monthfound1 = false;
+        while(!monthfound1) {
+        WebElement loop_month = driver.findElement(By.xpath("//select[@aria-label='Select month']"));
+        Select tg = new Select(loop_month);
+        List<WebElement> as = tg.getOptions();
+        for(WebElement tmonths : as) {     	
+        	System.out.println(tmonths.getText());
+        	if(tmonths.getText().equalsIgnoreCase(targetMonth)) {
+        		System.out.println("✅ Target year month: " + tmonths.getText());
+        		tg.selectByVisibleText(targetMonth);
+        		monthfound1 = true;
+        		break;
+        	}
+        	Thread.sleep(500); // wait for dropdown to refresh
+        }
         }
         
     }
