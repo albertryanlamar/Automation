@@ -10,6 +10,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
+
 import io.appium.java_client.android.AndroidDriver;
 
 public class LaunchApp {
@@ -29,38 +30,38 @@ public class LaunchApp {
 	{
 		if(Constant.Platform.equalsIgnoreCase("Android")) 
 		{
-			Constant.driver = startSourceLab_Android();
+			//Constant.driver = startSourceLab_Android();
 		}
 	}
 	// For LambdaSetup
-	public static void LambdaSetup(String Browser) throws Exception {
+	/*public static void LambdaSetup(String Browser) throws Exception {
 		if(Constant.Platform.equalsIgnoreCase("Android")) 
 		{
 			Constant.driver = startLambda_Android();
 		}
 		if(Constant.Platform.equalsIgnoreCase("Ios")) 
 		{
-			Constant.driver = startLambda_IOS();
+			//Constant.driver = startLambda_IOS();
 		}
 		else {
 			Constant.driver = startLambda_Desktop(Browser);
 		}
-	}
+	} */
 	// For Testingbot Setup
 	public static void TestingbotSetup(String Browser) throws Exception {
 		if(Constant.Platform.equalsIgnoreCase("Android")) 
 		{
-			Constant.driver = startLambda_Android();
+			//Constant.driver = startLambda_Android();
 		}
 		if(Constant.Platform.equalsIgnoreCase("Ios")) 
 		{
-			Constant.driver = startLambda_IOS();
+			//Constant.driver = startLambda_IOS();
 		}
 		else {
 			Constant.driver = startTestingbot_Desktop(Browser);
 		}
 	}
-	// Testingbot for Android setup
+	// Testingbot 
 	public static RemoteWebDriver startTestingbot_Desktop( String Browser) {
 		if(Browser.equalsIgnoreCase("Chrome")) {
 			multioption.setCapability("build", "My First Build");
@@ -89,7 +90,7 @@ public class LaunchApp {
 	}
 	
 	// Android Lambda Setup
-	public static AndroidDriver startLambda_Android() 
+	/*public static AndroidDriver startLambda_Android() 
 	{
         // Target mobile browser (Chrome on Android)
         caps.setCapability("platformName", "Android");
@@ -106,9 +107,9 @@ public class LaunchApp {
             return null;
         }
 		
-	}
+	} */
 	
-	public static AndroidDriver startLambda_IOS() 
+	/*public static AndroidDriver startLambda_IOS() 
 	{
         // Target mobile browser (Chrome on Android)
         caps.setCapability("platformName", "Android");
@@ -126,7 +127,7 @@ public class LaunchApp {
             return null;
         }
 		
-	}
+	} */
 	
 	//for browserstack
 	public static  RemoteWebDriver startBrowserstark(String Browser) throws Exception {

@@ -105,7 +105,7 @@ public class TestConfig {
 		
 		if(this.runIn.equalsIgnoreCase("Lambda")) {
 			if(opts.contains("CHROME")) {
-				LaunchApp.LambdaSetup("Chrome");
+				//LaunchApp.LambdaSetup("Chrome");
 			}
 		}
 		if(this.runIn.equalsIgnoreCase("Testingbot")) {
